@@ -1,0 +1,59 @@
+erDiagram
+    GUARDIAN ||--o{ PET : owns
+    PET ||--o{ MEDICAL_RECORD : has
+    VET ||--o{ MEDICAL_RECORD : has
+    GUARDIAN ||--o{ MEDICAL_RECORD : has
+    ORDER ||--o{ ORDER_ITEM : includes
+    ITEM ||--o{ ORDER_ITEM : referenced_by
+
+    GUARDIAN {
+        int id_GUARDIAN PK
+        string name
+        varchar(45) phone_number
+        string email
+        string address
+    }
+
+    PET {
+        int id_PET PK
+        varchar(45) pet_name
+        int age
+        int id_GUARDIAN FK
+        string animal_type
+        string species
+    }
+    ORDER {
+        int id_ORDER PK
+        int quantity
+        int price
+    }
+    
+    ITEM {
+        int id_ITEM PK
+        varchar(45) name
+        int price
+        int stock
+    }
+
+    ORDER_ITEM {
+        int id_ORDER_ITEM PK
+        int id_ITEM FK
+        int id_ORDER FK
+        int quantity
+        
+
+    }
+    VET {
+        int id_VET PK
+        string name
+        id license_number UK
+        string phone
+    }
+
+    MEDICAL_RECORD {
+        int id_MEDICAL_RECORD PK
+        date visit_date
+        string note
+        int id_PET FK
+        int id_VET FK
+    }
